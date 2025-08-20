@@ -1,66 +1,49 @@
-## Foundry
+# Crowdfunding Smart Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This is a decentralized crowdfunding smart contract written in **Solidity**. It allow users to create campaigns, 
+contribute funds and manage withdrawals and refunds, based on campaign success.
 
-Foundry consists of:
+## Features
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
+> - **Create Campaigns** - Set a funding target and deadline (at least a week after campaign creation)
+> - **Contribute** - Support campaigns by sending ETH.
+> - **Withdraw** - Campaign Creator can withdraw funds if the goal is reached after the deadline.
+> - **Refund** - Contributors can reclaim funds if the campaign fails to meet its goal after the deadline or is closed.
 
 ## Usage
 
-### Build
+> - Use `createCampaign(target, deadline)` to start a campaign.
+> - Users can contribute via contribute `(campaignId)`
+> - Creators withdraw funds with `withdraw(campaignId)` if the target is reached after the deadline.
+> - Contributors can claim refunds with `refundContribution(campaignId)` if the campaign fails or is closed.
 
-```shell
-$ forge build
+## Deployment
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/mitrev-g/My-Solidity-Projects.git
+   cd crowdfunding-project
+   ```
+2. Install Foundry (if not already installed)
+   ```bash
+   curl -L https://foundry.paradigm.xyz | bash
+   foundryup
+   ```
+3. Compile the files
+   ```bash
+   forge build
+   ```
+
+## Testing and Coverage
+```bash
+forge test
+forge coverage
 ```
+   
 
-### Test
 
-```shell
-$ forge test
-```
+## Additional Notes
 
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+> - Campaign deadlines must be at least 7 days.
+> - Contributions can't be 0.
+> - All tests are written with Foundry.
