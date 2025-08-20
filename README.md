@@ -1,4 +1,4 @@
-# 🚀 Solidity Projects Portfolio
+#  Solidity Projects Portfolio
 
 Hi there! **👋** 
 I'm **Georgi Mitrev**, a blockchain developer passionate about smart contracts and decentralized applications.
